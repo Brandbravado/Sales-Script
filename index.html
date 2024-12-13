@@ -827,6 +827,623 @@
             }
         }
     </style>
+    </style>
+<body>
+    <div class="container">
+        <!-- Customer Info Sidebar -->
+        <div class="customer-sidebar">
+            <h2>Customer Profile</h2>
+            
+            <div class="customer-profile">
+                <div class="profile-header">
+                    <i data-feather="user"></i>
+                    <div>
+                        <strong id="customer-name">John Smith</strong>
+                        <div id="company-name">Tech Innovators</div>
+                    </div>
+                </div>
+                
+                <div class="profile-details">
+                    <div class="detail-item">
+                        <i data-feather="globe"></i>
+                        <span id="website">techinnovators.com</span>
+                    </div>
+                    <div class="detail-item">
+                        <i data-feather="mail"></i>
+                        <span id="email">john@techinnovators.com</span>
+                    </div>
+                    <div class="detail-item">
+                        <i data-feather="phone"></i>
+                        <span id="phone">555-0123</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-details">
+                <div class="detail-item">
+                    <i data-feather="calendar"></i>
+                    <span id="start-date">Start: Dec 20, 2024</span>
+                </div>
+                <div class="detail-item">
+                    <i data-feather="dollar-sign"></i>
+                    <span id="budget">Budget: $15,000-20,000</span>
+                </div>
+                <div class="detail-item">
+                    <i data-feather="package"></i>
+                    <span id="package">Premium QuickStart</span>
+                </div>
+            </div>
+
+            <div class="customer-goals">
+                <h3>Goals & Pain Points</h3>
+                <div class="goals-list" id="goals-container">
+                    <div class="goal-item">
+                        <i data-feather="target" class="priority-high"></i>
+                        <div class="goal-content">
+                            <span>Increase conversion rate by 40%</span>
+                            <div class="goal-metrics">
+                                <small>Current: 2.3%</small>
+                                <small>Target: 3.2%</small>
+                                <small>Timeline: 90 days</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <i data-feather="target" class="priority-high"></i>
+                        <div class="goal-content">
+                            <span>Improve mobile responsiveness</span>
+                            <div class="goal-metrics">
+                                <small>Current: 65% bounce rate</small>
+                                <small>Target: 40% bounce rate</small>
+                                <small>Timeline: 60 days</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="goal-item">
+                        <i data-feather="target" class="priority-medium"></i>
+                        <div class="goal-content">
+                            <span>Launch new product pages</span>
+                            <div class="goal-metrics">
+                                <small>Current: 5 products</small>
+                                <small>Target: 15 products</small>
+                                <small>Timeline: 45 days</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Pain Points</h3>
+                <div class="pain-points-list" id="pain-points-container">
+                    <div class="pain-item">
+                        <i data-feather="alert-triangle" class="impact-high"></i>
+                        <div class="pain-content">
+                            <span>Losing customers to competitors</span>
+                            <small class="pain-details">Estimated $50k monthly revenue loss</small>
+                        </div>
+                    </div>
+                    <div class="pain-item">
+                        <i data-feather="alert-triangle" class="impact-high"></i>
+                        <div class="pain-content">
+                            <span>Poor mobile experience</span>
+                            <small class="pain-details">60% of traffic is mobile, high bounce rate</small>
+                        </div>
+                    </div>
+                    <div class="pain-item">
+                        <i data-feather="alert-triangle" class="impact-high"></i>
+                        <div class="pain-content">
+                            <span>Low conversion rates</span>
+                            <small class="pain-details">Currently at 2.3% vs industry average 3.1%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" onclick="showModal('proposal')">
+                    <i data-feather="file-text"></i>
+                    View Proposal
+                </button>
+                <button class="btn btn-secondary" onclick="showModal('brand')">
+                    <i data-feather="pie-chart"></i>
+                    View Brand Plan
+                </button>
+                <button class="btn btn-outline" onclick="showModal('notes')">
+                    <i data-feather="edit-3"></i>
+                    Meeting Notes
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="script-navigation">
+                <button class="nav-btn active" data-section="intro">Intro</button>
+                <button class="nav-btn" data-section="discovery">Discovery</button>
+                <button class="nav-btn" data-section="solution">Solution</button>
+                <button class="nav-btn" data-section="proposal">Proposal</button>
+                <button class="nav-btn" data-section="closing">Closing</button>
+            </div>
+
+            <div class="script-sections" id="script-container">
+                <!-- Introduction Section -->
+                <div class="script-section" data-section="intro">
+                    <div class="section-header">
+                        <h3>Introduction</h3>
+                        <i data-feather="help-circle" class="tip-trigger"></i>
+                    </div>
+                    <div class="script-text">
+                        "Hi [Name], this is [Your Name] from Brand Bravado. I've been reviewing your submission regarding the website redesign project and spent some time analyzing your current site at [URL]. I've noticed several opportunities that align with your goals. Is this still a good time to talk?"
+                    </div>
+                    <div class="tip-box">
+                        <div class="tip-item">
+                            <i data-feather="lightbulb"></i>
+                            <span>Start with warm acknowledgment of their submission - shows you've done your homework</span>
+                        </div>
+                        <div class="tip-item">
+                            <i data-feather="alert-circle"></i>
+                            <span>Listen to their tone and energy level - match it appropriately</span>
+                        </div>
+                    </div>
+                    <div class="conditional-flows">
+                        <div class="flow-item positive">
+                            <div class="flow-header">
+                                <i data-feather="smile"></i>
+                                <span>If Positive:</span>
+                            </div>
+                            <div class="flow-response">
+                                "Great! I noticed you're particularly interested in [specific goal from form]. Could you tell me more about what's driving that priority?"
+                            </div>
+                        </div>
+                        <div class="flow-item neutral">
+                            <div class="flow-header">
+                                <i data-feather="meh"></i>
+                                <span>If Neutral:</span>
+                            </div>
+                            <div class="flow-response">
+                                "I understand how busy things can get. I'll make sure we cover everything efficiently. What's your biggest priority for this website project?"
+                            </div>
+                        </div>
+                        <div class="flow-item negative">
+                            <div class="flow-header">
+                                <i data-feather="frown"></i>
+                                <span>If Negative:</span>
+                            </div>
+                            <div class="flow-response">
+                                "I appreciate you making time despite the challenges. Would you prefer to reschedule, or shall we focus on your most pressing website concerns today?"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Discovery Section -->
+                <div class="script-section" data-section="discovery">
+                    <div class="section-header">
+                        <h3>Discovery</h3>
+                        <i data-feather="help-circle" class="tip-trigger"></i>
+                    </div>
+                    <div class="script-text">
+                        "I see you're looking to start by [timeline]. What's driving that timeline? Also, I noticed your current site has [observed issue]. How is that impacting your business?"
+                    </div>
+                    <div class="questions-container">
+                        <div class="question-card">
+                            <div class="question-text">
+                                <span>1. "When you mentioned [pain point], could you help me understand the specific impact that's having on your business?"</span>
+                            </div>
+                            <div class="question-followup">
+                                <i data-feather="corner-down-right"></i>
+                                <span>"What would it mean for your business if we could solve that in the next 90 days?"</span>
+                            </div>
+                            <div class="question-tip">
+                                <i data-feather="lightbulb"></i>
+                                <span>Focus on quantifying the pain in revenue terms</span>
+                            </div>
+                            <div class="value-proposition">
+                                <i data-feather="trending-up"></i>
+                                <span>Our solutions typically increase conversion rates by 35-50% within 90 days</span>
+                            </div>
+                        </div>
+                        
+                        <div class="question-card">
+                            <div class="question-text">
+                                <span>2. "You mentioned mobile responsiveness - what percentage of your traffic is currently mobile?"</span>
+                            </div>
+                            <div class="question-followup">
+                                <i data-feather="corner-down-right"></i>
+                                <span>"And how is the current mobile experience affecting your conversion rates?"</span>
+                            </div>
+                            <div class="question-tip">
+                                <i data-feather="lightbulb"></i>
+                                <span>Connect technical issues to business impact</span>
+                            </div>
+                            <div class="value-proposition">
+                                <i data-feather="trending-up"></i>
+                                <span>Our mobile-first approach typically increases mobile conversions by 50%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="question-card">
+                            <div class="question-text">
+                                <span>3. "What specific metrics would indicate success for you in the first 90 days?"</span>
+                            </div>
+                            <div class="question-followup">
+                                <i data-feather="corner-down-right"></i>
+                                <span>"How would achieving these metrics impact your business goals?"</span>
+                            </div>
+                            <div class="question-tip">
+                                <i data-feather="lightbulb"></i>
+                                <span>Use these metrics in your solution presentation</span>
+                            </div>
+                            <div class="value-proposition">
+                                <i data-feather="trending-up"></i>
+                                <span>We'll establish clear KPIs and tracking from day one</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Solution Section -->
+                <div class="script-section" data-section="solution">
+                    <div class="section-header">
+                        <h3>Solution Presentation</h3>
+                        <i data-feather="help-circle" class="tip-trigger"></i>
+                    </div>
+                    <div class="script-text">
+                        "Based on what you've shared, I'd like to show you how our solution addresses each of your key challenges..."
+                    </div>
+                    <div class="key-points">
+                        <div class="key-point-card">
+                            <h4>Conversion Optimization</h4>
+                            <p>Our proven process has increased conversion rates by an average of 45% for similar businesses</p>
+                            <div class="proof-point">
+                                <i data-feather="check-circle"></i>
+                                <span>Case study: Similar client saw 52% increase in 90 days</span>
+                            </div>
+                            <div class="implementation-details">
+                                <div class="impl-item">
+                                    <i data-feather="settings"></i>
+                                    <span>Custom optimization strategy targeting your specific audience</span>
+                                </div>
+                                <div class="impl-item">
+                                    <i data-feather="clock"></i>
+                                    <span>First optimizations live within 2 weeks</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="key-point-card">
+                            <h4>Mobile-First Design</h4>
+                            <p>Complete mobile optimization with responsive design and accelerated loading</p>
+                            <div class="proof-point">
+                                <i data-feather="check-circle"></i>
+                                <span>Average mobile conversion increase of 65%</span>
+                            </div>
+                            <div class="implementation-details">
+                                <div class="impl-item">
+                                    <i data-feather="settings"></i>
+                                    <span>Responsive redesign with AMP implementation</span>
+                                </div>
+                                <div class="impl-item">
+                                    <i data-feather="clock"></i>
+                                    <span>Mobile optimization completed within 45 days</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="key-point-card">
+                            <h4>Product Page Optimization</h4>
+                            <p>Conversion-focused product page templates with A/B testing</p>
+                            <div class="proof-point">
+                                <i data-feather="check-circle"></i>
+                                <span>Average product page conversion increase of 32%</span>
+                            </div>
+                            <div class="implementation-details">
+                                <div class="impl-item">
+                                    <i data-feather="settings"></i>
+                                    <span>Custom templates with your branding</span>
+                                </div>
+                                <div class="impl-item">
+                                    <i data-feather="clock"></i>
+                                    <span>New product pages launched within 30 days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proposal Section -->
+                <div class="script-section" data-section="proposal">
+                    <div class="section-header">
+                        <h3>Proposal Review</h3>
+                        <i data-feather="help-circle" class="tip-trigger"></i>
+                    </div>
+                    <div class="script-text">
+                        "Let's review the custom proposal I've prepared based on your needs..."
+                    </div>
+                    <div class="proposal-sections">
+                            <div class="proposal-section">
+                                <h4>Project Scope</h4>
+                                <p class="key-point">Comprehensive solution addressing all identified challenges</p>
+                                <ul class="scope-list">
+                                    <li>Mobile-first redesign with responsive optimization</li>
+                                    <li>Conversion rate optimization strategy</li>
+                                    <li>Custom product page templates</li>
+                                    <li>Ongoing optimization and A/B testing</li>
+                                    <li>Analytics integration and KPI tracking</li>
+                                </ul>
+                            </div>
+
+                            <div class="proposal-section">
+                                <h4>Implementation Timeline</h4>
+                                <p class="key-point">Strategic implementation with quick wins</p>
+                                <div class="timeline-points">
+                                    <div class="timeline-item">
+                                        <i data-feather="flag"></i>
+                                        <div class="timeline-content">
+                                            <strong>Week 1-2:</strong>
+                                            <p>Initial optimizations and analytics setup</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <i data-feather="smartphone"></i>
+                                        <div class="timeline-content">
+                                            <strong>Week 3-6:</strong>
+                                            <p>Mobile redesign and responsive optimization</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <i data-feather="layout"></i>
+                                        <div class="timeline-content">
+                                            <strong>Week 7-8:</strong>
+                                            <p>Product page templates and implementation</p>
+                                        </div>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <i data-feather="trending-up"></i>
+                                        <div class="timeline-content">
+                                            <strong>Week 9+:</strong>
+                                            <p>Ongoing optimization and performance tracking</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="proposal-section">
+                                <h4>Investment Structure</h4>
+                                <p class="key-point">Value-based pricing with clear ROI tracking</p>
+                                <div class="investment-details">
+                                    <div class="investment-item">
+                                        <strong>Premium QuickStart Package</strong>
+                                        <ul>
+                                            <li>Complete mobile-first redesign</li>
+                                            <li>Custom product templates</li>
+                                            <li>Conversion optimization setup</li>
+                                        </ul>
+                                    </div>
+                                    <div class="investment-item">
+                                        <strong>Implementation Fee</strong>
+                                        <ul>
+                                            <li>One-time setup and optimization</li>
+                                            <li>Analytics integration</li>
+                                            <li>Team training and documentation</li>
+                                        </ul>
+                                    </div>
+                                    <div class="investment-item">
+                                        <strong>Monthly Optimization</strong>
+                                        <ul>
+                                            <li>Ongoing A/B testing</li>
+                                            <li>Performance monitoring</li>
+                                            <li>Regular optimization updates</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Closing Section -->
+                    <div class="script-section" data-section="closing">
+                        <div class="section-header">
+                            <h3>Closing</h3>
+                            <i data-feather="help-circle" class="tip-trigger"></i>
+                        </div>
+                        <div class="script-text">
+                            "Based on everything we've discussed, especially your goals for increased conversions and mobile optimization, I'm confident we can deliver exceptional results. What questions do you have about moving forward?"
+                        </div>
+                        <div class="closing-options">
+                            <div class="closing-primary">
+                                <h4>Primary Close</h4>
+                                <p>"Given your timeline of [start date], I recommend we schedule our kickoff call for next week. Would Tuesday or Wednesday work better for your team?"</p>
+                                <div class="closing-tips">
+                                    <div class="tip-item">
+                                        <i data-feather="check-circle"></i>
+                                        <span>Assume the sale and focus on next steps</span>
+                                    </div>
+                                    <div class="tip-item">
+                                        <i data-feather="users"></i>
+                                        <span>Include key stakeholders in kickoff planning</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="closing-alternative">
+                                <h4>Alternative Closes</h4>
+                                <div class="alt-close-options">
+                                    <div class="alt-close-item">
+                                        <p>"What would you need to see from us to feel completely confident about moving forward today?"</p>
+                                        <small>Use when prospect shows interest but hesitates</small>
+                                    </div>
+                                    <div class="alt-close-item">
+                                        <p>"Would you be more comfortable with a phased approach, starting with [specific component] first?"</p>
+                                        <small>Use when budget or timeline concerns arise</small>
+                                    </div>
+                                    <div class="alt-close-item">
+                                        <p>"Based on the potential revenue increase we discussed, what's preventing us from getting started right away?"</p>
+                                        <small>Use to address unspoken objections</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="next-steps">
+                                <h4>Next Steps</h4>
+                                <div class="next-steps-list">
+                                    <div class="next-step-item">
+                                        <i data-feather="calendar"></i>
+                                        <span>"When would you like to schedule our kickoff call?"</span>
+                                    </div>
+                                    <div class="next-step-item">
+                                        <i data-feather="users"></i>
+                                        <span>"Who else needs to be involved in the kickoff meeting?"</span>
+                                    </div>
+                                    <div class="next-step-item">
+                                        <i data-feather="file-text"></i>
+                                        <span>"Would you prefer DocuSign or PDF for the paperwork?"</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Objections Sidebar -->
+        <div class="objections-sidebar">
+            <div class="objections-header">
+                <h2>Objection Handling</h2>
+                <div class="search-box">
+                    <i data-feather="search"></i>
+                    <input type="text" placeholder="Search objections..." id="objection-search">
+                </div>
+            </div>
+            
+            <div class="objections-categories">
+                <button class="category-btn active" data-category="all">All</button>
+                <button class="category-btn" data-category="price">Price</button>
+                <button class="category-btn" data-category="timing">Timing</button>
+                <button class="category-btn" data-category="competition">Competition</button>
+                <button class="category-btn" data-category="authority">Authority</button>
+            </div>
+
+            <div id="objections-container" class="objections-list">
+                <!-- Price Objections -->
+                <div class="objection-card" data-category="price">
+                    <div class="objection-title">
+                        <i data-feather="dollar-sign"></i>
+                        <span>Your prices are too high compared to others</span>
+                    </div>
+                    <div class="objection-response">
+                        <p>"I understand cost is a significant factor. Let's look at the ROI our clients typically see within the first 6 months. When we helped [reference client] with similar goals to yours, they saw a 300% return on their investment. What kind of ROI would make this investment make sense for you?"</p>
+                        <div class="follow-up">
+                            <i data-feather="corner-down-right"></i>
+                            <span>"What specific elements of our solution are you comparing with competitors?"</span>
+                        </div>
+                        <div class="quick-tips">
+                            <span class="tip-tag">Focus on value, not cost</span>
+                            <span class="tip-tag">Use specific ROI examples</span>
+                            <span class="tip-tag">Compare total cost of ownership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timing Objections -->
+                <div class="objection-card" data-category="timing">
+                    <div class="objection-title">
+                        <i data-feather="clock"></i>
+                        <span>We need to wait until next quarter</span>
+                    </div>
+                    <div class="objection-response">
+                        <p>"I understand timing is important. Let's look at the potential cost of waiting. Based on your current conversion rate of 2.3%, waiting another quarter could mean missing out on approximately $150,000 in potential revenue. What's driving the decision to wait?"</p>
+                        <div class="follow-up">
+                            <i data-feather="corner-down-right"></i>
+                            <span>"What would need to happen to make starting sooner possible?"</span>
+                        </div>
+                        <div class="quick-tips">
+                            <span class="tip-tag">Calculate cost of delay</span>
+                            <span class="tip-tag">Offer phased implementation</span>
+                            <span class="tip-tag">Discuss payment terms</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competition Objections -->
+                <div class="objection-card" data-category="competition">
+                    <div class="objection-title">
+                        <i data-feather="users"></i>
+                        <span>We're considering other agencies</span>
+                    </div>
+                    <div class="objection-response">
+                        <p>"I appreciate your due diligence in evaluating options. Could you share what specific criteria you're using to make your decision? This will help me understand if there are any gaps in how I've presented our solution and what makes us unique in addressing your specific challenges."</p>
+                        <div class="follow-up">
+                            <i data-feather="corner-down-right"></i>
+                            <span>"What aspects of our solution stand out compared to others you're considering?"</span>
+                        </div>
+                        <div class="quick-tips">
+                            <span class="tip-tag">Focus on unique value</span>
+                            <span class="tip-tag">Highlight experience</span>
+                            <span class="tip-tag">Emphasize results</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Authority Objections -->
+                <div class="objection-card" data-category="authority">
+                    <div class="objection-title">
+                        <i data-feather="shield"></i>
+                        <span>I need to get approval from my team/boss</span>
+                    </div>
+                    <div class="objection-response">
+                        <p>"That makes sense - it's important to have all stakeholders aligned. What specific concerns do you think they'll have? I can provide detailed ROI calculations and case studies that address those concerns directly. Would it be helpful to schedule a brief call with the other decision-makers?"</p>
+                        <div class="follow-up">
+                            <i data-feather="corner-down-right"></i>
+                            <span>"What information would be most valuable for you to present to them?"</span>
+                        </div>
+                        <div class="quick-tips">
+                            <span class="tip-tag">Offer to join stakeholder call</span>
+                            <span class="tip-tag">Provide supporting materials</span>
+                            <span class="tip-tag">Set clear next steps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal" id="documentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Document Preview</h2>
+                <button class="close-modal" onclick="closeModal()">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-content">
+                <!-- Content populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="notesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Meeting Notes</h2>
+                <button class="close-modal" onclick="closeModal()">
+                    <i data-feather="x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="notes-container">
+                    <div class="notes-input">
+                        <textarea id="meeting-notes" placeholder="Add your notes here..."></textarea>
+                        <button class="btn btn-primary" onclick="saveNotes()">Save Notes</button>
+                    </div>
+                    <div class="notes-history" id="notes-history">
+                        <!-- Notes history populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
     // Customer Data and Configuration
     const customerData = {
