@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Script Navigator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.1/feather.min.js"></script>
+    <style>
+        :root {
+            --primary: #1650B7;
+            --secondary: #35C579;
+            --white: #ffffff;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-700: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: rgba(22, 80, 183, 0.05);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Customer Info Sidebar */
+        .customer-sidebar {
+            width: 280px;
+            background: var(--white);
+            border-right: 1px solid var(--primary);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .customer-profile {
+            background: rgba(22, 80, 183, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .customer-goals {
+            margin-top: 1.5rem;
+        }
+
+        .goal-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .script-section {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-header {
+            color: var(--primary);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+        }
+
+        .script-text {
+            color: var(--gray-700);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .tip-box {
+            background: rgba(53, 197, 121, 0.1);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* Objections Sidebar */
+        .objections-sidebar {
+            width: 300px;
+            background: var(--white);
+            border-left: 1px solid var(--primary);
+            padding: 1.5rem;
+            overflow-y: auto;
+        }
+
+        .objection-card {
+            background: var(--white);
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .objection-card:hover {
+            background: rgba(22, 80, 183, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .objection-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .objection-response {
+            display: none;
+            color: var(--gray-700);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        /* Buttons */
+        .btn {
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            width: 80%;
+            height: 80%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            color: var(--gray-700);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .customer-sidebar, .objections-sidebar {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .customer-sidebar, .objections-sidebar {
+                width: 100%;
+                height: auto;
+                max-height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Customer Info Sidebar -->
+        <div class="customer-sidebar">
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Customer Profile</h2>
+            
+            <div class="customer-profile">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-feather="user"></i>
+                    <div>
+                        <strong>John Smith</strong>
+                        <div style="font-size: 0.9rem; color: var(--gray-700);">Tech Innovators</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                    <i data-feather="calendar"></i>
+                    <span>Start: Dec 20, 2024</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i data-feather="dollar-sign"></i>
+                    <span>Budget: $15,000-20,000</span>
+                </div>
+            </div>
+
+            <div class="customer-goals">
+                <h3 style="color: var(--primary); margin-bottom: 0.5rem;">Goals</h3>
+                <div class="goal-item">
+                    <i data-feather="target"></i>
+                    <span>Increase conversion rate by 40%</span>
+                </div>
+                <div class="goal-item">
+                    <i data-feather="smartphone"></i>
+                    <span>Improve mobile responsiveness</span>
+                </div>
+                <div class="goal-item">
+                    <i data-feather="layout"></i>
+                    <span>Launch new product pages</span>
+                </div>
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <button class="btn" onclick="showModal('proposal')">
+                    <i data-feather="file-text"></i>
+                    View Proposal
+                </button>
+                <button class="btn btn-secondary" onclick="showModal('brand')">
+                    <i data-feather="pie-chart"></i>
+                    View Brand Plan
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <div class="script-section">
+                <h2 class="section-header">Introduction</h2>
+                <div class="script-text">
+                    Hi John, this is [Your Name] from Brand Bravado. I've reviewed your submission for the Premium QuickStart package and spent time analyzing techinnovators.com. I noticed several opportunities that align perfectly with your goals of increasing conversion rates. How has your day been so far?
+                </div>
+                <div class="tip-box">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <i data-feather="lightbulb"></i>
+                        <div>
+                            <strong>Tip:</strong> Build rapport but keep it brief. Listen for energy level and adjust your tone accordingly.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="script-section">
+                <h2 class="section-header">Discovery</h2>
+                <div class="script-text">
+                    I see you're looking to start by December 20th. What's driving that timeline?
+                </div>
+                <div class="tip-box">
+                    <div style="display: flex; gap: 0.5rem;">
+                        <i data-feather="alert-circle"></i>
+                        <div>
+                            <strong>Key Questions:</strong>
+                            <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                                <li>When you mentioned losing customers to competitors, how is that specifically impacting your revenue?</li>
+                                <li>What would it mean for your business if we could solve that in the next 90 days?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Continue with other sections... -->
+        </div>
+
+        <!-- Objections Sidebar -->
+        <div class="objections-sidebar">
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Common Objections</h2>
+            <div id="objections-container">
+                <!-- Objections will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="documentModal">
+        <div class="modal-content">
+            <i data-feather="x" class="close-modal" onclick="closeModal()"></i>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Feather Icons
+        feather.replace();
+
+        // Common Objections Data
+        const objections = [
+            {
+                title: "Your prices are too high",
+                response: "I understand cost is a significant factor. Let's look at the ROI our clients typically see within the first 6 months..."
+            },
+            {
+                title: "I need to think about it",
+                response: "I appreciate you wanting to make a thoughtful decision. Help me understand what specific aspects you'd like to think through..."
+            },
+            // Add more objections...
+        ];
+
+        // Populate Objections
+        const objectionContainer = document.getElementById('objections-container');
+        objections.forEach(obj => {
+            const card = document.createElement('div');
+            card.className = 'objection-card';
+            card.innerHTML = `
+                <div class="objection-title">${obj.title}</div>
+                <div class="objection-response">${obj.response}</div>
+            `;
+            card.addEventListener('click', () => toggleResponse(card));
+            objectionContainer.appendChild(card);
+        });
+
+        // Toggle Objection Response
+        function toggleResponse(card) {
+            const response = card.querySelector('.objection-response');
+            const isVisible = response.style.display === 'block';
+            document.querySelectorAll('.objection-response').forEach(r => r.style.display = 'none');
+            response.style.display = isVisible ? 'none' : 'block';
+        }
+
+        // Modal Functions
+        function showModal(type) {
+            const modal = document.getElementById('documentModal');
+            const content = document.getElementById('modalContent');
+            
+            content.innerHTML = `<h2 style="color: var(--primary); margin-bottom: 1rem;">
+                ${type === 'proposal' ? 'Custom Proposal' : 'Brand Plan'}
+            </h2>
+            <div style="height: calc(100% - 3rem); background: var(--gray-100); border-radius: 4px;">
+                <!-- Embed your document viewer here -->
+                <img src="/api/placeholder/800/600" alt="Document Preview" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>`;
+            
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('documentModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
